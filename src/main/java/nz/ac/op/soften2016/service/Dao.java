@@ -1,5 +1,6 @@
 package nz.ac.op.soften2016.service;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,41 +14,54 @@ import java.util.List;
  * Basic DAO operations dependent with Hibernate's specific classes
  * @see SessionFactory
  */
-@Transactional(propagation= Propagation.REQUIRED, readOnly=false)
 public class Dao {
 
     private SessionFactory sessionFactory;
 
-    public Dao() {
-
-    }
-
-    @Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
+    public SessionFactory getSessionFactory() { return sessionFactory; }
+    public void setSessionFactory(SessionFactory sessionFactory){
         this.sessionFactory = sessionFactory;
     }
 
-    protected Session currentSession() {
+    private Session getCurrentSession(){
         return sessionFactory.getCurrentSession();
     }
 
-    public void add(Class entity) {
-        currentSession().save(entity);
+    public void delete(Object object) {
+        if (object != null)
+            getCurrentSession().delete(object);
     }
 
-    public void update(Class entity) {
-        currentSession().saveOrUpdate(entity);
+    public Object get(Class clazz, Serializable id) {
+        return getCurrentSession().get(clazz, id);
     }
 
-    public void remove(Class entity) {
-        currentSession().delete(entity);
+    public Object save(Object object) {
+        return getCurrentSession().save(object);
     }
 
-    public Class find(Class entity, Long key) {
-        return (Class) currentSession().get(entity, key);
+    public Object update(Object object) {
+        getCurrentSession().update(object);
+        return object;
     }
 
-    public List<Class> list(Class entity) {
-        return currentSession().createCriteria(entity).list();
+    public Object saveOrUpdate(Object object) {
+        getCurrentSession().saveOrUpdate(object);
+        return object;
     }
+
+    public void flush() {
+        getCurrentSession().flush();
+    }
+
+    public List list(Class clazz) {
+        Criteria criteria = getCurrentSession().createCriteria(clazz);
+        return criteria.list();
+    }
+
+    public List search(final Class clazz, final SearchCriteria search) {
+        Criteria criteria = DaoUtil.getCriteria(getCurrentSession(), clazz, search);
+        return criteria.list();
+    }
+
 }

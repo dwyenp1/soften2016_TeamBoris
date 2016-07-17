@@ -3,6 +3,8 @@ package nz.ac.op.soften2016.service;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,8 +61,8 @@ public class Dao {
         return criteria.list();
     }
 
-    public List search(final Class clazz, final SearchCriteria search) {
-        Criteria criteria = DaoUtil.getCriteria(getCurrentSession(), clazz, search);
+    public List search(final Class clazz, final Criterion search) {
+        Criteria criteria = getCurrentSession().createCriteria(clazz).add(search);
         return criteria.list();
     }
 

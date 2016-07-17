@@ -24,6 +24,7 @@ import java.util.Map;
 public class CommonController
 {
     ServletContext servletContext;
+    private final String MAIN_TEMPLATE = "main";
 
     @Autowired
     private Dao dao;
@@ -35,17 +36,24 @@ public class CommonController
     private final static Logger log = LoggerFactory.getLogger(CommonController.class);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView defaultPage(HttpServletRequest request){
-        Map model = new HashMap();
+    public String defaultPage(HttpServletRequest request,
+                                    ModelMap model){
         model.put("page","home");
-        return new ModelAndView("main",model);
+        return MAIN_TEMPLATE;
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public ModelAndView homePage(HttpServletRequest request){
-        Map model = new HashMap();
+    public String homePage(HttpServletRequest request,
+                           ModelMap model){
         model.put("page","home");
-        return new ModelAndView("main",model);
+        return MAIN_TEMPLATE;
+    }
+
+    @RequestMapping(value = "/contact", method = RequestMethod.GET)
+    public String contactPage(HttpServletRequest request,
+                           ModelMap model){
+        model.put("page","contact");
+        return MAIN_TEMPLATE;
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
@@ -59,11 +67,11 @@ public class CommonController
         {
             String[] toppingList = {"Pepperoni","Cheese"};
             Pizza pepperoniPizza = new Pizza();
-            pepperoniPizza.setPizzaName("Pepperoni");
+            pepperoniPizza.setName("Pepperoni");
             for(String s : toppingList)
             {
                 Topping topping = new Topping();
-                topping.setToppingName(s);
+                topping.setName(s);
                 dao.save(topping);
                 pepperoniPizza.createPizzaTopping(topping);
             }
@@ -74,7 +82,7 @@ public class CommonController
 
         model.put("pizzas", pizzas);
         model.put("page","order");
-        return "main";
+        return MAIN_TEMPLATE;
     }
 
 }

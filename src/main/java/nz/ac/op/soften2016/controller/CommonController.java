@@ -36,30 +36,30 @@ public class CommonController
     private final static Logger log = LoggerFactory.getLogger(CommonController.class);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String defaultPage(HttpServletRequest request,
-                                    ModelMap model){
+    public ModelAndView defaultPage(HttpServletRequest request){
+    	Map model = new HashMap();
         model.put("page","home");
-        return MAIN_TEMPLATE;
+        return new ModelAndView(MAIN_TEMPLATE,model);
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String homePage(HttpServletRequest request,
-                           ModelMap model){
+    public ModelAndView homePage(HttpServletRequest request){
+    	Map model = new HashMap();
         model.put("page","home");
-        return MAIN_TEMPLATE;
+        return new ModelAndView(MAIN_TEMPLATE,model);
     }
 
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
-    public String contactPage(HttpServletRequest request,
-                           ModelMap model){
+    public ModelAndView contactPage(HttpServletRequest request){
+    	Map model = new HashMap();
         model.put("page","contact");
-        return MAIN_TEMPLATE;
+        return new ModelAndView(MAIN_TEMPLATE,model);
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
-    public String orderPage(HttpServletRequest request,
-                            ModelMap model){
+    public ModelAndView orderPage(HttpServletRequest request){
 
+    	Map model = new HashMap();
         List<Pizza> pizzas = dao.list(Pizza.class);
 
         //TODO: add an admin interface for adding pizzas
@@ -82,7 +82,7 @@ public class CommonController
 
         model.put("pizzas", pizzas);
         model.put("page","order");
-        return MAIN_TEMPLATE;
+        return new ModelAndView(MAIN_TEMPLATE,model);
     }
 
 }

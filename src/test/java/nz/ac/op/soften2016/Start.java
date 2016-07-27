@@ -14,12 +14,12 @@ public class Start {
 		connector.setMaxIdleTime(1000 * 60 * 60);
 		connector.setSoLingerTime(-1);
         connector.setHost("localhost");
-		connector.setPort(8080);
+		connector.setPort(80);
         server.setConnectors(new Connector[]{connector});
 
 		WebAppContext bb = new WebAppContext();
 		bb.setServer(server);
-		bb.setContextPath("/soften2016");
+		bb.setContextPath("");
 		bb.setWar("src/main/webapp");
 
 

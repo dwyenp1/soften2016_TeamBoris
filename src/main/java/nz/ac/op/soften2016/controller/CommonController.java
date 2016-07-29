@@ -65,7 +65,7 @@ public class CommonController
         //TODO: add an admin interface for adding pizzas
         if(pizzas.size() == 0)
         {
-            String[] toppingList = {"Pepperoni","Cheese"};
+            String[] toppingList = {"Pepperoni","Cheese","Chicken Strips"};
             Pizza pepperoniPizza = new Pizza();
             pepperoniPizza.setName("Pepperoni");
             for(String s : toppingList)

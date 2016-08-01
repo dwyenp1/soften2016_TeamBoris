@@ -1,3 +1,3 @@
 <div class='mainContent'>
-    <p>Welcome to Pizza</p>
+    <p><h1>Welcome to Pizza</h1></p>
 </div>

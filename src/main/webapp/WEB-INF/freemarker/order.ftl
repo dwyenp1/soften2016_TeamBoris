@@ -1,6 +1,9 @@
 <div class='mainContent'>
     <p>Welcome to the ordering page</p>
 
+    <#list myStrings as s>
+    ${s}<br/>
+    </#list>
     <#if pizzas?has_content>
         <ul>
         <#list pizzas as p>

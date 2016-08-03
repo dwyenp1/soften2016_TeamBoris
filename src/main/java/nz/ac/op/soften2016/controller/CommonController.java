@@ -79,7 +79,8 @@ public class CommonController
             dao.save(pepperoniPizza);
             pizzas.add(pepperoniPizza);
         }
-
+        String[] myStrings = {"string1", "string2", "string3"};
+        model.put("myStrings", myStrings);
         model.put("pizzas", pizzas);
         model.put("page","order");
         return new ModelAndView(MAIN_TEMPLATE,model);

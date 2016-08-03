@@ -4,6 +4,8 @@
     <#list myStrings as s>
     ${s}<br/>
     </#list>
+    <p><b><u>Pizza Menu</u></b></p>
+    <p><i>All pizzas come with Freeza Pizza’s signature sauce</i></p>
     <#if pizzas?has_content>
         <ul>
         <#list pizzas as p>

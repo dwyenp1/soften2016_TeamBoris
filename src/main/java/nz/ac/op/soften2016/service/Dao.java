@@ -1,3 +1,8 @@
+/**
+ * Dao.Java is used as the in between the java application and the postgress database.
+ * Each of these methods is performing an operation on the database such as adding an object to it or deleting one.
+ */
+
 package nz.ac.op.soften2016.service;
 
 import org.hibernate.Criteria;

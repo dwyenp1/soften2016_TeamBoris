@@ -1,3 +1,8 @@
+/**
+ * Start.java is the file used to start up and make the temporary Jetty Server.
+ * This is used to host the Application/Website on the LocalHost port.
+ * The address is "localhost:8080/soften2016".
+ */
 package nz.ac.op.soften2016;
 
 import org.mortbay.jetty.Connector;

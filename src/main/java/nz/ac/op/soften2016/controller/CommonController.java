@@ -52,6 +52,12 @@ public class CommonController
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public ModelAndView contactPage(HttpServletRequest request){
     	Map model = new HashMap();
+    	
+    	
+    	String[] mystring = {"Test 1", "Test 2", "Test 3"};
+    	
+    	model.put("myStrings", mystring);
+    	
         model.put("page","contact");
         return new ModelAndView(MAIN_TEMPLATE,model);
     }

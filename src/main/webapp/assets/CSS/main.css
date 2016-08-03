@@ -1,0 +1,9 @@
+@CHARSET "ISO-8859-1";
+
+.navnavbar-nav ul
+{
+	display: inline;
+    border: solid;
+    border-width: 1px 1px 0 1px;
+    margin: 0 5px 0 0;
+}

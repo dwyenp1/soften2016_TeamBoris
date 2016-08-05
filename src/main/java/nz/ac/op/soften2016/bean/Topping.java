@@ -10,6 +10,7 @@ public class Topping {
 
     private Long id;
     private String name;
+    private String description;
     private Set<PizzaTopping> pizzaToppings = new HashSet<PizzaTopping>();
 
 
@@ -19,12 +20,16 @@ public class Topping {
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name;}
+    
+    public String getDescription() {return description;}
+    public void setDescription(String description) {this.description = description;}
 
     public Set<PizzaTopping> getPizzaToppings() { return pizzaToppings; }
     public void setPizzaToppings(Set<PizzaTopping> pizzaToppings) { this.pizzaToppings = pizzaToppings; }
 
     //Methods
-    public Topping(){ }
+    public Topping(){
+    }
 
     public Topping(String name){
         this.name = name;

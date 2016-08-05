@@ -79,6 +79,12 @@ public class CommonController
             dao.save(pepperoniPizza);
             pizzas.add(pepperoniPizza);
         }
+        
+        //This is how you add a new topping, or a pizza
+        Topping topping = new Topping();
+        topping.setName("my name");
+        topping.setDescription("My awesome description");
+        dao.save(topping);
 
         model.put("pizzas", pizzas);
         model.put("page","order");

@@ -14,7 +14,11 @@
                 <property name="name">
                     <column name="name" />
                 </property>
-
+                
+                <property name="description">
+					<column name="description" />                
+                </property>
+                
                 <set name="pizzaToppings" cascade="all,delete-orphan" order-by="id" inverse="true">
                     <key column="toppingId"/>
                     <one-to-many class="PizzaTopping"/>

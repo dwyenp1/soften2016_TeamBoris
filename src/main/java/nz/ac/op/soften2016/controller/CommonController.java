@@ -55,6 +55,13 @@ public class CommonController
         model.put("page","contact");
         return new ModelAndView(MAIN_TEMPLATE,model);
     }
+    
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public ModelAndView adminPage(HttpServletRequest request){
+    	Map model = new HashMap();
+        model.put("page","admin");
+        return new ModelAndView(MAIN_TEMPLATE,model);
+    }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public ModelAndView orderPage(HttpServletRequest request){
@@ -62,6 +69,21 @@ public class CommonController
     	Map model = new HashMap();
         List<Pizza> pizzas = dao.list(Pizza.class);
 
+       String[] pizzaToppings = {"Beef", "Cheese", "Bacon", "BBQ Sauce"};
+       Pizza meatLovers = new Pizza();
+       meatLovers.setName("MeatLovers");
+       for(String s : pizzaToppings)
+       {
+    	   Topping topping = new Topping();
+    	   topping.setName(s);
+    	   dao.save(topping);
+    	   meatLovers.createPizzaTopping(topping);
+       }
+       dao.save(meatLovers);
+       pizzas.add(meatLovers);
+       
+       
+        
         //TODO: add an admin interface for adding pizzas
         if(pizzas.size() == 0)
         {

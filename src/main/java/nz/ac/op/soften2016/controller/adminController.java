@@ -1,8 +1,6 @@
 package nz.ac.op.soften2016.controller;
 
-import nz.ac.op.soften2016.bean.Pizza;
-import nz.ac.op.soften2016.bean.PizzaTopping;
-import nz.ac.op.soften2016.bean.Topping;
+import  nz.ac.op.soften2016.bean.UserProfile;
 import nz.ac.op.soften2016.service.Dao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +35,20 @@ public class adminController
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView defaultPage(HttpServletRequest request){
-    	Map model = new HashMap();
+    	List<UserProfile> users = dao.list(UserProfile.class);
+        if (users.size() == 0) {
+            UserProfile user = new UserProfile();
+            user.setName("Lee");
+            user.setPassword("P@ssw0rd");
+            user.setSalt("salt");
+            
+            users.add(user);
+            dao.save(user);
+            
+        }
+        
+        Map model = new HashMap();
+        model.put("users",users);
         model.put("page","admin");
         return new ModelAndView(MAIN_TEMPLATE,model);
     }

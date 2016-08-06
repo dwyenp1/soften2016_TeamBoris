@@ -18,6 +18,7 @@
                 <value>Pizza.hbm.xml</value>
                 <value>PizzaTopping.hbm.xml</value>
                 <value>Topping.hbm.xml</value>
+                <value>UserProfile.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">

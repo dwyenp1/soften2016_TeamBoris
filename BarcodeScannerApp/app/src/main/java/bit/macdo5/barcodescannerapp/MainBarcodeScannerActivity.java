@@ -39,6 +39,11 @@ public class MainBarcodeScannerActivity extends AppCompatActivity implements OnC
             String scanFormat = scanningResult.getFormatName();
             formatTxt.setText("FORMAT: " + scanFormat);
             contentTxt.setText("CONTENT: " + scanContent);
+            //test:
+            if(scanContent.equals("9501101530003"))
+            {
+                contentTxt.setText("Pizza stuff");
+            }
         }
         else{
             Toast toast = Toast.makeText(getApplicationContext(),

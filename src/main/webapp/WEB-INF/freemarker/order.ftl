@@ -1,5 +1,11 @@
 <div class='mainContent'>
+
+<h1>TEAM ROCKY PIZZA</h1>
     <p>Welcome to the ordering page</p>
+    
+<form action="/addpizza" method="POST">
+<button>HELLO</button>
+</form>
 
     <#if pizzas?has_content>
         <ul>

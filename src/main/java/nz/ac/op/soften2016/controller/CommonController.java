@@ -42,10 +42,31 @@ public class CommonController
         return new ModelAndView(MAIN_TEMPLATE,model);
     }
 
+    //CHANGE TO POST not get, and change home to add pizza
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView homePage(HttpServletRequest request){
     	Map model = new HashMap();
         model.put("page","home");
+        return new ModelAndView(MAIN_TEMPLATE,model);
+    }
+    
+    @RequestMapping(value = "/addpizza", method = RequestMethod.POST)
+    public ModelAndView homeAddPizza(HttpServletRequest request){
+    	Map model = new HashMap();
+        model.put("page","home");
+        String[] toppingList = {"Pepperoni","Cheese"};
+        Pizza pepperoniPizza = new Pizza();
+        pepperoniPizza.setName("Pepperoni");
+        for(String s : toppingList)
+        {
+            Topping topping = new Topping();
+            topping.setName(s);
+            dao.save(topping);
+            pepperoniPizza.createPizzaTopping(topping);
+        }
+        
+        dao.save(pepperoniPizza);
+        
         return new ModelAndView(MAIN_TEMPLATE,model);
     }
 
@@ -56,6 +77,7 @@ public class CommonController
         return new ModelAndView(MAIN_TEMPLATE,model);
     }
 
+    // PUT THIS AS A BUTTON.
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public ModelAndView orderPage(HttpServletRequest request){
 
@@ -63,8 +85,8 @@ public class CommonController
         List<Pizza> pizzas = dao.list(Pizza.class);
 
         //TODO: add an admin interface for adding pizzas
-        if(pizzas.size() == 0)
-        {
+        //if(pizzas.size() == 0)
+        //{
             String[] toppingList = {"Pepperoni","Cheese"};
             Pizza pepperoniPizza = new Pizza();
             pepperoniPizza.setName("Pepperoni");
@@ -78,7 +100,7 @@ public class CommonController
 
             dao.save(pepperoniPizza);
             pizzas.add(pepperoniPizza);
-        }
+        //}
 
         model.put("pizzas", pizzas);
         model.put("page","order");

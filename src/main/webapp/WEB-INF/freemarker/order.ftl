@@ -1,6 +1,6 @@
 <div class='mainContent'>
     <p>Welcome to the ordering page</p>
-
+<button></button>
     <#if pizzas?has_content>
         <ul>
         <#list pizzas as p>

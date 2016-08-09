@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<title>FreezasPizza</title>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css" /> 
+	<meta charset="UTF-8">
+</head>
+<body>
+<div id="contents">
+	<form action='process2.php' method="POST">
+		<H1 id="title">Freeza Pizza Admin</H1>
+		<fieldset id="toppings">
+			<legend>Topping Stock</legend>
+
+			<#if pizzas?has_content>
+				<#list pizzas as p>
+					<table>
+						<#if p.pizzaToppings?has_contents>							
+							<tr>
+								<th></th>
+                    			<th>Topping</th>
+                    			<th>Quantity</th>
+                    		</tr>
+                    		<#list p.pizzaToppings as pt>
+                    			<tr></tr>
+                    			<tr>
+                    				<td>${pt.topping.name}</td>
+                    			</tr>
+                    			<tr>
+                    				<td>$
+                    			</tr>
+                    		</#list>
+						</#if>
+					</table>
+				</#list>
+
+			</#if>
+            <div id="toppingTable">
+                <tr>
+                    <th></th>
+                    <th>Topping</th>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </div>            
+        </fieldset>
+        <fieldset>
+			<legend>Quiz Items</legend>
+			<label for='numberCountries'>How many countries are in the 2016 Olympics? </label>
+			<input id='numberCountries' type='text' name='numberCountries' value=''>
+
+				<br>
+				<br>
+
+			<label>The first sport on the timetable is: <br><br></label>
+			<input type='radio' name='firstSport' value='Judo'>Judo <br>
+			<input type='radio' name='firstSport' value='Shooting'>Shooting <br>
+			<input type='radio' name='firstSport' value='Football'>Football <br>
+			<input type='radio' name='firstSport' value='WeightLifting'>WeightLifting <br>
+
+			<br>
+			
+			<label>Which Country was <b>not</b> in the top 3 medal count in the last Olympics? <br><br></label>
+			<input type='radio' name='notTopThree' value='China'><img src='images/china.gif' alt='China Flag'>
+			<input type='radio' name='notTopThree' value='USA'><img src='images/united-states.gif' alt='USA Flag'>
+			<input type='radio' name='notTopThree' value='Russia'><img src='images/russia.gif' alt='Russia Flag'>
+			<input type='radio' name='notTopThree' value='British'><img src='images/great-britain.gif' alt='British Flag'>
+
+			<br>
+			<br>
+
+			<label>Where were the last four Olympic games played? <br><br></label>
+			<input type='checkbox' name='city[]' value='Atlanta'>Atlanta<br>
+			<input type='checkbox' name='city[]' value='Athens'>Athens<br>
+			<input type='checkbox' name='city[]' value='London'>London<br>
+			<input type='checkbox' name='city[]' value='Beijing'>Beijing<br>
+			<input type='checkbox' name='city[]' value='Sydney'>Sydney
+
+			<br>
+			<br>
+
+			<label>Which sport is no longer in the Olympics? <br><br></label>
+			<select name='sportGone'>
+				<option value='noSelection'>Select a Sport:</option>
+				<option value='Baseball'>Baseball</option>
+				<option value='Beach Volleyball'>Volleyball</option>
+				<option value='BMX'>BMX</option>
+				<option value='Hand Ball'>Hand Ball</option>
+
+			</select>
+		</fieldset>
+
+		<br>
+		<button type='submit' name='submit' value='Submit Your Answers'>Submit Your Answers</button>
+	</form>
+</div>
+</body>
+
+</html>

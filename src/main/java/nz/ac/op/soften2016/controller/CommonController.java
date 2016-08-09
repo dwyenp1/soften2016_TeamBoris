@@ -62,6 +62,29 @@ public class CommonController
         model.put("page","admin");
         return new ModelAndView(MAIN_TEMPLATE,model);
     }
+    
+    @RequestMapping(value = "/addPizza", method = RequestMethod.POST)
+    public ModelAndView addPizza(HttpServletRequest request)
+    {
+    	String[] pizzaToppings = {"Beef", "Cheese", "Bacon", "BBQ Sauce"};
+        Pizza meatLovers = new Pizza();
+        meatLovers.setName("MeatLovers");
+        for(String s : pizzaToppings)
+        {
+     	   Topping topping = new Topping();
+     	   topping.setName(s);
+     	   topping.setQuantity(3);
+
+     	   dao.save(topping);
+     	   meatLovers.createPizzaTopping(topping);
+        }
+        dao.save(meatLovers);
+        
+        //Stuff so the method doesnt complain
+        Map model = new HashMap();
+        model.put("page","admin");
+        return new ModelAndView(MAIN_TEMPLATE,model);
+    }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public ModelAndView orderPage(HttpServletRequest request){

@@ -9,6 +9,7 @@
                 (
                     <#list p.pizzaToppings as pt>
                         ${pt.topping.name}
+                        ${pt.topping.quantity}
                         <#if pt_has_next>, </#if>
                     </#list>
                 )

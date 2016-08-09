@@ -76,6 +76,8 @@ public class CommonController
        {
     	   Topping topping = new Topping();
     	   topping.setName(s);
+    	   topping.setQuantity(3);
+
     	   dao.save(topping);
     	   meatLovers.createPizzaTopping(topping);
        }
@@ -89,11 +91,11 @@ public class CommonController
         {
             String[] toppingList = {"Pepperoni","Cheese"};
             Pizza pepperoniPizza = new Pizza();
-            pepperoniPizza.setName("Pepperoni");
+            pepperoniPizza.setName("Pepperoni");            
             for(String s : toppingList)
             {
                 Topping topping = new Topping();
-                topping.setName(s);
+                topping.setName(s);                
                 dao.save(topping);
                 pepperoniPizza.createPizzaTopping(topping);
             }

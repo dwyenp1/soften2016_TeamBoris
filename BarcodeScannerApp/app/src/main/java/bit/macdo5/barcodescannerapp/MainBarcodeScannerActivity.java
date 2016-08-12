@@ -30,6 +30,13 @@ public class MainBarcodeScannerActivity extends AppCompatActivity implements OnC
         if(v.getId()==R.id.scan_button){
             IntentIntegrator scanIntegrator = new IntentIntegrator(this);
             scanIntegrator.initiateScan();
+
+        }
+        if(v.getId()==R.id.btnConfirmPurchase) {
+
+        }
+        if(v.getId()==R.id.btnCheckCart) {
+
         }
     }
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
